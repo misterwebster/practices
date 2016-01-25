@@ -7,18 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+@Controller
+@EnableAutoConfiguration
 public class ExampleController {
-  @Controller
-  @EnableAutoConfiguration
-  public static class SampleController {
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-      return "Test!";
-    }
-
-    public static void main(String[] args) throws Exception {
-      SpringApplication.run(SampleController.class, args);
-    }
+  @RequestMapping("/")
+  @ResponseBody
+  String home() {
+    return "Test!";
   }
+
+  public static void main(String[] args) throws Exception {
+    SpringApplication.run(ExampleController.class, args);
+  }
+
 }
