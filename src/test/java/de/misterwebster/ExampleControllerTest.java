@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -42,9 +43,15 @@ public class ExampleControllerTest {
   }
     
   @Test
-  public void checkHappyPath() throws Exception {
-      
-    mockMvc.perform(get("/")).andExpect(status().isOk());
-        
+  public void checkHappyPath() throws Exception {      
+    mockMvc.perform(get("/")).andExpect(status().isOk());        
   }
+
+  @Test
+  public void checkContent() throws Exception {
+    this.mockMvc.perform(get("/").accept("application/json"))
+      .andExpect(content().string("Test!"));
+
+  }
+
 }
