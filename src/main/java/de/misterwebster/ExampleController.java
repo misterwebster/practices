@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Map;
+
 
 @Controller
 @EnableAutoConfiguration
@@ -20,4 +22,8 @@ public class ExampleController {
     SpringApplication.run(ExampleController.class, args);
   }
 
+  @RequestMapping({"/home"})
+  public String showHomePage(Map<String, Object> model) {
+    return "/webapp/WEB-INF/index.html";
+  }
 }

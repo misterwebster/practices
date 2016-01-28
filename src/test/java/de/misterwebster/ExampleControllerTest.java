@@ -51,7 +51,13 @@ public class ExampleControllerTest {
   public void checkContent() throws Exception {
     this.mockMvc.perform(get("/").accept("application/json"))
       .andExpect(content().string("Test!"));
-
+  }
+  
+  //why different response web (Whitelabel Error Page) vs. rest call /emptySite
+  @Test
+  public void checkErrorPageContent() throws Exception {
+    this.mockMvc.perform(get("/emptySite").accept("application/xml"))
+      .andExpect(content().string(""));
   }
 
 }
